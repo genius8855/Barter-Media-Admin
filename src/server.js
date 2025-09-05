@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
     res.render("home");
 });
 
-app.use("/products",productsRoute);
+app.use("/products",productsRoute)
 
 const port = 8081;
 
