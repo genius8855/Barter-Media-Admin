@@ -33,11 +33,11 @@
         <div class="h-full flex-5 bg-zinc-900 rounded text-white overflow-y-auto">
             <div class="border-b-1 border-zinc-600 p-4">
                 <h1 class="text-2xl text-center mt-4">Add Products</h1>
-                <form action="/products/create" method="post" class="p-4 flex flex-col gap-2">
+                <form action="/products/create" method="post" enctype="multipart/form-data" class="p-4 flex flex-col gap-2">
                     <div>
-                        <label for="name" class="text-zinc-300">Name</label>
+                        <label for="heading" class="text-zinc-300">Name</label>
                         <input class="px-3 py-1 border-2 mt-1 border-zinc-500 outline-none rounded w-full" type="text"
-                            name="name" placeholder="Product Name">
+                            name="heading" placeholder="Product Name">
                     </div>
                     <div>
                         <label for="description" class="text-zinc-300">Description</label>
@@ -67,7 +67,7 @@
                                 file here or</h4>
                             <div class="flex items-center justify-center">
                                 <label>
-                                    <input type="file" hidden name="imageurl"/>
+                                    <input type="file" hidden name="image"/>
                                     <div
                                         class="flex w-28 h-9 px-2 flex-col bg-blue-400 rounded-full shadow text-black text-xs font-semibold leading-4 items-center justify-center cursor-pointer focus:outline-none">
                                         Choose File</div>
