@@ -3,7 +3,7 @@ const app = express();
 const path = require("path")
 const productsRoute = require("./routes/products")
 const connectDB = require('./config/connect');
-
+require('dotenv').config()
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -12,7 +12,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-connectDB(); //Database connection
+connectDB();
 
 app.get("/", (req, res) => {
     res.render("home");
