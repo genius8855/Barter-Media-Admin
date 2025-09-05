@@ -4,10 +4,13 @@ const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const cloudinary = require("cloudinary").v2;
 
 cloudinary.config({
+
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
+
+
 
 const storage = new CloudinaryStorage({
     cloudinary,
@@ -23,6 +26,8 @@ const addProducts = async (req, res) => {
     try {
         const { heading, description, caption } = req.body;
 
+        // console.log(req.file)
+
         if (!req.file) {
             return res.status(400).json({ error: "❌ Image is required" });
         }
@@ -33,7 +38,7 @@ const addProducts = async (req, res) => {
             heading,
             description,
             caption,
-            images: imageUrl,
+            image: imageUrl,
         });
 
         await product.save();
