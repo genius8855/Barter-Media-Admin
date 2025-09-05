@@ -7,6 +7,7 @@ router.get("/",(req,res)=>{
     res.render("products")
 })
 router.post('/create', upload.single("image"), addProducts);
-// router.get('/', getProducts);
+router.get('/get', getProducts);
+
 
 module.exports = router;
