@@ -12,7 +12,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-connectDB();
+connectDB(); //Database connection
 
 app.get("/", (req, res) => {
     res.render("home");
