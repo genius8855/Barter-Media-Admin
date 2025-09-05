@@ -1,0 +1,25 @@
+{
+  "name": "barter",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "scripts": {
+    "start": "nodemon src/server.js",
+    "build:css": "postcss ./src/public/styles/styles.css -o ./src/public/styles/build.css --watch",
+    "dev": "concurrently \"npm:build:css\" \"npm:start\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.12",
+    "autoprefixer": "^10.4.17",
+    "nodemon": "^3.1.9",
+    "postcss": "^8.4.31",
+    "postcss-cli": "^10.1.0",
+    "prettier": "^3.5.3",
+    "tailwindcss": "^4.0.12",
+    "concurrently": "^8.2.0"
+  }
+}
