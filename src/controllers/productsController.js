@@ -42,7 +42,8 @@ const addProducts = async (req, res) => {
         });
 
         await product.save();
-        res.status(201).json({ message: "✅ Product added successfully", product });
+        // res.status(201).json({ message: "✅ Product added successfully", product });
+        res.redirect("/products")
     } catch (error) {
         console.error("Server Error:", error);
         res.status(500).json({ error: "❌ Server error", details: error.message });
