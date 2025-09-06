@@ -58,8 +58,29 @@ const getProducts = async (req, res) => {
     }
 };
 
+const deleteProducts = async (req, res) => {
+    try {
+        const id = req.params.id;
+        if(!id) {
+            return res.status(404).json({ error: "❌ Please provide product id correctly!"});
+        }
+
+        const find = await Products.find({_id: id});
+        if(!find) {
+            return res.status(404).json({ error: "❌ No such product exists" });
+        }
+
+        await Products.findByIdAndDelete({_id: id});
+        res.status(200).json({ message: "✅ Products deleted successfully"});
+    } catch (error) {
+        console.error("Server Error:", error);
+        res.status(500).json({ error: "❌ Server error", details: error.message });
+    }
+}
+
 module.exports = {
     addProducts,
     getProducts,
     upload,
+    deleteProducts,
 };
