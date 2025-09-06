@@ -43,7 +43,41 @@ const addHomeSlider = async (req, res) => {
     }
 }
 
+const getHomeSlider = async (req, res) => {
+    try {
+        const homeSlider = await HomeSlider.find({});
+        res.status(200).json({ message: "✅ Slider fetched successfully", homeSlider });
+    } catch (error) {
+        console.error("Server Error:", error);
+        res.status(500).json({ error: "❌ Server error", details: error.message });
+    }
+}
+
+const deleteHomeSlider = async (req, res) => {
+    try {
+        const id = req.params.id;
+        if(!id){
+            return res.status(404).json({ error: "❌ Please provide slider id correctly!"});
+        }
+
+        const find = await HomeSlider.find({_id: id});
+        if(!find) return res.status(404).json({ error: "❌ No such slider exists"});
+
+        if(!find) {
+            return res.status(404).json({ error: "❌ No such product exists" });
+        }
+
+        await HomeSlider.findByIdAndDelete({_id: id});
+        res.status(200).json({ message: "✅ Slider deleted successfully"});
+    } catch (error) {
+        console.error("Server Error:", error);
+        res.status(500).json({ error: "❌ Server error", details: error.message });
+    }
+}
+
 module.exports = {
     addHomeSlider,
+    getHomeSlider,
+    deleteHomeSlider,
     upload,
 }
