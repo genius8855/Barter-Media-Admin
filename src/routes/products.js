@@ -14,8 +14,12 @@ router.get("/", async (req, res) => {
         res.status(500).json({ error: "❌ Server error", details: error.message });
     }
 })
-router.post('/create', upload.single("images"), addProducts);
-router.delete('/delete', deleteProducts);
-// router.get('/', getProducts);
+
+router.get("/add",(req,res)=>{
+    res.render("addProduct")
+})
+router.post('/create', upload.single("image"), addProducts);
+router.get('/get', getProducts);
+
 
 module.exports = router;

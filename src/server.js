@@ -4,6 +4,7 @@ const express = require("express")
 const session = require('express-session');
 const app = express();
 const path = require("path")
+
 const productsRoute = require("./routes/products");
 const homeSliderRoute = require("./routes/homeSlider");
 const adminAuthRoute = require('./routes/auth');
@@ -32,6 +33,10 @@ app.get("/", (req, res) => {
     res.render("home");
 });
 
+
+app.get("/login",(req,res)=>{
+    res.render("login");
+})
 app.use("/products", authenticated, productsRoute);
 app.use("/homeSlider", authenticated, homeSliderRoute);
 app.use("/auth", authenticated, adminAuthRoute);

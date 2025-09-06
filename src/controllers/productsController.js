@@ -26,8 +26,6 @@ const addProducts = async (req, res) => {
     try {
         const { heading, description, caption } = req.body;
 
-        // console.log(req.file)
-
         if (!req.file) {
             return res.status(400).json({ error: "❌ Image is required" });
         }
