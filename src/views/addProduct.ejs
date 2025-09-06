@@ -13,12 +13,12 @@
     <div class="h-screen bg-zinc-700 flex justify-center items-center p-10 relative">
         <div class="bg-zinc-600 rounded-md p-6 w-[500px] z-10">
             <h1 class="text-2xl text-white mb-4 text-center">Add Product</h1>
-            <form action="">
-                <input type="text" name="heading" placeholder="Heading"
+            <form action="/products/create" method="post" enctype="multipart/form-data">
+                <input type="text" name="heading" placeholder="Heading" required="true"
                     class="w-full mb-4 px-3 py-2 rounded bg-zinc-300 text-zinc-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <input type="text" name="description" placeholder="Description"
+                <input type="text" name="description" placeholder="Description" required="true"
                     class="w-full mb-4 px-3 py-2 rounded bg-zinc-300 text-zinc-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <input type="text" name="caption" placeholder="Caption"
+                <input type="text" name="caption" placeholder="Caption" required="true"
                     class="w-full mb-4 px-3 py-2 rounded bg-zinc-300 text-zinc-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <input type="file" name="image"
                     class="w-full mb-4 px-3 py-2 rounded bg-zinc-300 text-zinc-800 focus:outline-none focus:ring-2 focus:ring-blue-500" />

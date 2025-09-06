@@ -53,29 +53,31 @@
                                 <th scope="col" class="px-6 py-3">Id</th>
                                 <th scope="col" class="px-6 py-3">Name</th>
                                 <th scope="col" class="px-6 py-3">Description</th>
-                                <th scope="col" class="px-6 py-3">Caption</th>
                                 <th scope="col" class="px-6 py-3">ImageUrl</th>
                                 <th scope="col" class="px-6 py-3">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr
-                                class="odd:bg-zinc-800 odd:hover:bg-zinc-700 odd:text-zinc-400 even:bg-zinc-900 even:text-zinc-500 even:hover:bg-zinc-800 border-b border-zinc-600">
-                                <td class="px-6 py-4 font-medium">1</td>
-                                <td class="px-6 py-4">Keyboard</td>
-                                <td class="px-6 py-4">Hp Keyboard</td>
-                                <td class="px-6 py-4">Try to swap</td>
-                                <td class="px-6 py-4">https://image.com</td>
-                                <td class="px-6 py-4">
-                                    <a class="cursor-pointer">
-                                        <i
-                                            class="fa-solid fa-trash-can p-2 bg-red-600 rounded text-black text-center"></i>
-                                    </a>
-                                    <!-- <a href="/products/edit" class="cursor-pointer">
-                                        <i class="fa-solid fa-pen-to-square p-2 bg-amber-500 text-black rounded"></i>
-                                    </a> -->
-                                </td>
-                            </tr>
+                            <% if(locals.homeSlider) { %>
+                                <% homeSlider.forEach((item,index)=>{ %>
+                                    <tr
+                                        class="odd:bg-zinc-800 odd:hover:bg-zinc-700 odd:text-zinc-400 even:bg-zinc-900 even:text-zinc-500 even:hover:bg-zinc-800 border-b border-zinc-600">
+                                        <td class="px-6 py-4 font-medium"><%=index + 1 %></td>
+                                        <td class="px-6 py-4"><%=item.heading %></td>
+                                        <td class="px-6 py-4"><%=item.description %></td>
+                                        <td class="px-6 py-4 text-blue-400 underline decoration-1 flex flex-col gap-0.5">
+                                            <a href="<%=item.images[0] %>" target="_blank">view image1</a>
+                                            <a href="<%=item.images[1] %>" target="_blank">view image1</a>
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <a class="cursor-pointer" href="/homeSlider/delete/<%=item._id %>">
+                                                <i
+                                                    class="fa-solid fa-trash-can p-2 bg-red-600 rounded text-black text-center"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <% }) %>
+                            <% } %>
                         </tbody>
                     </table>
                 </div>

@@ -1,12 +1,13 @@
 function authenticated(req, res, next) {
   try {
     if (req.session && req.session.adminId) {
+    //   console.log("✅ Authenticated:", req.session.adminId);
       return next();
     }
-    res.redirect("/login");
+    return res.redirect("/login");  // added return
   } catch (err) {
-    console.error("Authentication middleware error:", err);
-    res.status(500).send("Internal Server Error");
+    console.error("❌ Authentication middleware error:", err);
+    return res.status(500).send("Internal Server Error");
   }
 }
 

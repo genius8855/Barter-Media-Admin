@@ -39,7 +39,7 @@ app.get("/login",(req,res)=>{
 })
 app.use("/products", authenticated, productsRoute);
 app.use("/homeSlider", authenticated, homeSliderRoute);
-app.use("/auth", authenticated, adminAuthRoute);
+app.use("/auth",adminAuthRoute);
 
 const port = 8081;
 

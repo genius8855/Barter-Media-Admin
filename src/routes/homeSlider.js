@@ -2,14 +2,12 @@ const express = require('express');
 const router = express.Router();
 const { addHomeSlider, upload, deleteHomeSlider } = require('../controllers/homeSliderController');
 const HomeSlider = require('../models/homeSlider');
-const { authenticated } = require('../middlewares/auth');
 
 router.post('/create', upload.array("images", 2), addHomeSlider);
 
 router.get("/", async (req, res) => {
     try {
         const homeSlider = await HomeSlider.find({});
-
         res.render("homeSlider", { homeSlider });
     } catch (error) {
         console.error("Server Error:", error);
@@ -17,6 +15,10 @@ router.get("/", async (req, res) => {
     }
 });
 
-router.delete('/delete', deleteHomeSlider);
+router.get("/add",(req,res)=>{
+    res.render("addHomeSlider")
+})
+
+router.get('/delete/:id', deleteHomeSlider);
 
 module.exports = router;

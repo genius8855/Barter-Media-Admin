@@ -4,9 +4,9 @@ const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const cloudinary = require("cloudinary").v2;
 
 cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
 const storage = new CloudinaryStorage({
@@ -36,7 +36,9 @@ const addHomeSlider = async (req, res) => {
         });
 
         await homeSlider.save();
-        res.status(201).json({ message: "✅ Product added successfully", homeSlider });
+        // res.status(201).json({ message: "✅ Product added successfully", homeSlider });
+        // return res.render("homeSlider", { homeSlider });
+        res.redirect("/homeSlider")
     } catch (error) {
         console.error("Server Error:", error);
         res.status(500).json({ error: "❌ Server error", details: error.message });
@@ -56,19 +58,20 @@ const getHomeSlider = async (req, res) => {
 const deleteHomeSlider = async (req, res) => {
     try {
         const id = req.params.id;
-        if(!id){
-            return res.status(404).json({ error: "❌ Please provide slider id correctly!"});
+        if (!id) {
+            return res.status(404).json({ error: "❌ Please provide slider id correctly!" });
         }
 
-        const find = await HomeSlider.find({_id: id});
-        if(!find) return res.status(404).json({ error: "❌ No such slider exists"});
+        const find = await HomeSlider.find({ _id: id });
+        if (!find) return res.status(404).json({ error: "❌ No such slider exists" });
 
-        if(!find) {
+        if (!find) {
             return res.status(404).json({ error: "❌ No such product exists" });
         }
 
-        await HomeSlider.findByIdAndDelete({_id: id});
-        res.status(200).json({ message: "✅ Slider deleted successfully"});
+        await HomeSlider.findByIdAndDelete({ _id: id });
+        // res.status(200).json({ message: "✅ Slider deleted successfully"});
+        res.redirect("/homeSlider")
     } catch (error) {
         console.error("Server Error:", error);
         res.status(500).json({ error: "❌ Server error", details: error.message });

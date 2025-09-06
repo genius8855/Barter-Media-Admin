@@ -17,6 +17,7 @@ const storage = new CloudinaryStorage({
     params: {
         folder: "products",
         allowed_formats: ["jpg", "jpeg", "png", "webp"],
+        transformation: [{quality: 'auto', fetch_format: 'auto'}]
     },
 });
 
@@ -71,7 +72,8 @@ const deleteProducts = async (req, res) => {
         }
 
         await Products.findByIdAndDelete({_id: id});
-        res.status(200).json({ message: "✅ Products deleted successfully"});
+        // res.status(200).json({ message: "✅ Products deleted successfully"});
+        res.redirect("/products")
     } catch (error) {
         console.error("Server Error:", error);
         res.status(500).json({ error: "❌ Server error", details: error.message });

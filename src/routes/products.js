@@ -19,7 +19,9 @@ router.get("/add",(req,res)=>{
     res.render("addProduct")
 })
 router.post('/create', upload.single("image"), addProducts);
-router.get('/get', getProducts);
+// router.get('/get', getProducts);
+
+router.get("/delete/:id",deleteProducts);
 
 
 module.exports = router;
