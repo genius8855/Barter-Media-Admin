@@ -1,5 +1,5 @@
 const express = require("express")
-const { addProducts, upload, getProducts } = require("../controllers/productsController")
+const { addProducts, upload, getProducts, deleteProducts } = require("../controllers/productsController")
 const Products = require("../models/products")
 const router = express.Router();
 
@@ -14,7 +14,8 @@ router.get("/", async (req, res) => {
         res.status(500).json({ error: "❌ Server error", details: error.message });
     }
 })
-router.post('/create', upload.single("image"), addProducts);
+router.post('/create', upload.single("images"), addProducts);
+router.delete('/delete', deleteProducts);
 // router.get('/', getProducts);
 
 module.exports = router;
