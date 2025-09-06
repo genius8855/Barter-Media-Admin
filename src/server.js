@@ -3,8 +3,9 @@ require("dotenv").config();
 const express = require("express")
 const app = express();
 const path = require("path")
-const productsRoute = require("./routes/products")
-const homeSliderRoute = require('./routes/homeSlider');
+
+const productsRoute = require("./routes/products");
+const homeSliderRoute = require("./routes/homeSlider");
 const connectDB = require('./config/connect');
 
 app.set("view engine", "ejs");
@@ -23,8 +24,8 @@ app.get("/", (req, res) => {
 app.get("/login",(req,res)=>{
     res.render("login");
 })
-app.use("/products",productsRoute)
-app.use('/homeSlider',homeSliderRoute);
+app.use("/products",productsRoute);
+app.use("/homeSlider", homeSliderRoute);
 
 const port = 8081;
 
